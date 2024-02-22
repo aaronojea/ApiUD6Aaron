@@ -3,7 +3,6 @@ package ad.apiud6aaron.controlador;
 import ad.apiud6aaron.modelo.Juego;
 import ad.apiud6aaron.repositorio.JuegoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
