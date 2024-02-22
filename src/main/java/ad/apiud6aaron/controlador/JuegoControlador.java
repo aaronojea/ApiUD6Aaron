@@ -36,8 +36,25 @@ public class JuegoControlador {
         return resultado.orElseThrow(() -> new RuntimeException("ERROR, Juego no encontrado"));
     }
 
-    //Crea un juego a la BD mediante peticion web POST
+    //Crea un juego en la BD mediante una peticion web POST
+    @PostMapping
     public Juego crearJuego(@RequestBody Juego juego) {
         return juegoRepositorio.save(juego);
+
+    }
+
+    //Edita un juego, que se pasa por parametro con su id, de la base de datos mediante una peticion web PUT en la que se añade a la ruta el id del juego
+    @PutMapping("/{id}")
+    public Juego editarJuego(@PathVariable Long id, @RequestBody Juego juego) {
+        return juegoRepositorio.findById(id).map(juegoTemp -> {
+            juegoTemp.setNombre((!juego.getNombre().isEmpty() && juego.getNombre() instanceof String)? juego.getNombre(): juegoTemp.getNombre());
+            return juegoRepositorio.save(juegoTemp);
+        }).orElseThrow(() -> new RuntimeException("Juego no encontrado"));
+    }
+
+    //Eliminar uun juego de la BD mediante una peticion web DELETE
+    @DeleteMapping("/{id}")
+    public void eliminarJuego(@PathVariable Long id) {
+        juegoRepositorio.deleteById(id);
     }
 }
