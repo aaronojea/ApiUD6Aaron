@@ -47,12 +47,12 @@ public class JuegoControlador {
     @PutMapping("/{id}")
     public Juego editarJuego(@PathVariable Long id, @RequestBody Juego juego) {
         return juegoRepositorio.findById(id).map(juegoTemp -> {
-            juegoTemp.setNombre((!juego.getNombre().isEmpty() && juego.getNombre() instanceof String)? juego.getNombre(): juegoTemp.getNombre());
+            juegoTemp.setNombre((!juego.getNombre().isEmpty())? juego.getNombre(): juegoTemp.getNombre());
             return juegoRepositorio.save(juegoTemp);
         }).orElseThrow(() -> new RuntimeException("Juego no encontrado"));
     }
 
-    //Eliminar uun juego de la BD mediante una peticion web DELETE
+    //Elimina un juego de la BD mediante una peticion web DELETE
     @DeleteMapping("/{id}")
     public void eliminarJuego(@PathVariable Long id) {
         juegoRepositorio.deleteById(id);
