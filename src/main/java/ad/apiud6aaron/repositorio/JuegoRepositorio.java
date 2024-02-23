@@ -7,4 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface JuegoRepositorio extends JpaRepository<Juego, Long> {
+
+    public Juego findByNombreLike(String nombreJuego);
 }

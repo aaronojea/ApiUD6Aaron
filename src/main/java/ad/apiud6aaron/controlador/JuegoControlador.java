@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/juegos")
 public class JuegoControlador {
@@ -33,6 +34,12 @@ public class JuegoControlador {
     public Juego obtenerJuegoPorId(@PathVariable Long id) {
         Optional<Juego> resultado = juegoRepositorio.findById(id);
         return resultado.orElseThrow(() -> new RuntimeException("ERROR, Juego no encontrado"));
+    }
+
+    //Obteber un juego por su nombre
+    @GetMapping("/juego/{nombreJuego}")
+    public Juego obtenerJuegoPorNombre(@PathVariable String nombreJuego) {
+        return juegoRepositorio.findByNombreLike(nombreJuego);
     }
 
     //Crea un juego en la BD mediante una peticion web POST

@@ -10,4 +10,6 @@ public interface PuntuacionRepositorio extends JpaRepository<Puntuacion, Long> {
     List<Puntuacion> findByJuegoId(Long id);
 
     List<Puntuacion> findByJuegoIdOrderByPuntuacionDesc(Long id);
+
+    public Puntuacion findByNombreLike(String nombreJugador);
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/puntuaciones")
 public class PuntuacionControlador {
@@ -50,6 +51,12 @@ public class PuntuacionControlador {
         return puntuacionRepositorio.findByJuegoId(idJuego);
     }
 
+    //Obtener un jugador con su puntuacion por su nombre
+    @GetMapping("/jugador/{nombreJugador}")
+    public Puntuacion obtenerPuntuacionPorNombre(@PathVariable String nombreJugador) {
+        return puntuacionRepositorio.findByNombreLike(nombreJugador);
+    }
+
     //Crea un jugador con su puntuacion en la BD mediante una peticion web POST
     @PostMapping("/juego/{id}")
     public Puntuacion crearJugador(@PathVariable Long id, @RequestBody Puntuacion puntuacion) {
@@ -70,7 +77,7 @@ public class PuntuacionControlador {
         }).orElseThrow(() -> new RuntimeException("Jugador no encontrado"));
     }
 
-    //Elimina un juego de la BD mediante una peticion web DELETE
+    //Elimina una puntuacion de la BD mediante una peticion web DELETE
     @DeleteMapping("/{id}")
     public void eliminarPuntuacion(@PathVariable Long id) {
         puntuacionRepositorio.deleteById(id);
