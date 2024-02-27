@@ -1,5 +1,12 @@
 package ad.apiud6aaron.modelo;
 
+/*
+ * Clase: ControladorPruebas
+ * Autor: Aarón Ojea Olmos
+ * Fecha de creación: 2024
+ * Descripción-Enunciado: Clase modelo de la tabla puntuación para mapearla con la BD.
+ */
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -13,15 +20,15 @@ public class Puntuacion {
 
     @NotBlank(message = "El nombre no puede ser vacio")
     String nombre;
-    
+
     @Min(message = "La puntuación no puede ser menor que 0", value = 0)
     long puntuacion;
+
     @ManyToOne
     @JoinColumn(name = "id_juego")
     private Juego juego;
 
     public Puntuacion() {}
-
     public Puntuacion(String nombre, long puntuacion, Juego juego) {
         this.nombre = nombre;
         this.puntuacion = puntuacion;

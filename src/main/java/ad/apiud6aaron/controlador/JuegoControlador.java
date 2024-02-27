@@ -1,5 +1,12 @@
 package ad.apiud6aaron.controlador;
 
+/*
+ * Clase: ControladorPruebas
+ * Autor: Aarón Ojea Olmos
+ * Fecha de creación: 2024
+ * Descripción-Enunciado: Clase controlador de juego, donde se realizan los métodos CRUD y otros métodos que se deseen.
+ */
+
 import ad.apiud6aaron.modelo.Juego;
 import ad.apiud6aaron.repositorio.JuegoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;

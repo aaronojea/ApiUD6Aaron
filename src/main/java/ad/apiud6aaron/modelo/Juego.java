@@ -1,9 +1,14 @@
 package ad.apiud6aaron.modelo;
 
+/*
+ * Clase: ControladorPruebas
+ * Autor: Aarón Ojea Olmos
+ * Fecha de creación: 2024
+ * Descripción-Enunciado: Clase modelo de la tabla juego para mapearla con la BD.
+ */
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-
-import java.util.List;
 
 @Entity(name = "juegos")
 public class Juego {
